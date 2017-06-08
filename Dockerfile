@@ -1,11 +1,22 @@
 FROM linuxserver/radarr
 MAINTAINER ullbergm
 
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
+    org.label-schema.name="Radarr" \
+    org.label-schema.description="Radarr container with dependencies for sickbeard_mp4_automator" \
+    org.label-schema.url="http://ullberg.us/docker/radarr" \
+    org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.vcs-url="https://github.com/ullbergm/docker-radarr" \
+    org.label-schema.vendor="Magnus Ullberg" \
+    org.label-schema.version=$VERSION \
+    org.label-schema.schema-version="1.0"
+
 # install packages
 RUN \
- apt-get update # && 
-
-RUN \
+ apt-get update && \
  apt-get install -y \
 	--no-install-recommends \
 	--no-install-suggests \
